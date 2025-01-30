@@ -66,10 +66,29 @@ class Gallery {
 	}
 
 	nextImage() {
-		
+		const selected = this.modalImages.querySelector('.selected');
+		const next = selected.nextElementSibling || this.modalImages.firstElementChild;
+		selected.classList.remove('selected');
+		next.classList.add('selected');
+		this.setMainImage(next);
 	}
+	prevImage() {
+		const selected = this.modalImages.querySelector('.selected');
+		const prev = selected.previousElementSibling || this.modalImages.lastElementChild;
+		selected.classList.remove('selected');
+		prev.classList.add('selected');
+		this.setMainImage(prev);
+	}
+	chooseImage(e) {
+		if (e.target.classList.contains('modal-img')) {
+			const selected = this.modalImages.querySelector('selected');
+			selected.classList.remove('selected');
 
-
-
-
+			this.setMainImage(e.target);
+			e.target.classList.add('selected');
+		}
+	}
 }
+
+const nature = new Gallery(getElement('.nature'));
+const city = new Gallery(getElement('.city'));
