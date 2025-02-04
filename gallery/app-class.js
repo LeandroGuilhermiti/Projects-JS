@@ -36,7 +36,8 @@ class Gallery {
 		);
 	}
 	openModal(selectedImage, list) {
-		this.setMainImage.innerHTML = list
+		this.setMainImage(selectedImage);
+		this.modalImages.innerHTML = list
 			.map(function(image) {
 				return `<img src="${image.src}"
 				title="${image.title}" data-id="${image.dataset.id}"
